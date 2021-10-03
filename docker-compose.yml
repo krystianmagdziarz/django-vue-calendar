@@ -1,0 +1,18 @@
+version: "3.3"
+
+services:
+  backend:
+    build:
+      context: ./django_backend
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./django_backend:/code
+    ports:
+      - "8000:8000"
+  frontend:
+    build:
+      context: ./vue_frontend
+    volumes:
+      - ./vue_frontend:/app
+    ports:
+      - "8080:8080"
